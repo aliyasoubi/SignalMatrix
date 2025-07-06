@@ -29,16 +29,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Correct built-ins:
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Your apps:
     'core',
     'crypto',
     'dashboard',
     'notifier',
+    # REMOVE any of these if present:
+    # 'django.templates',
+    # 'django.templates.defaulttags',
+    # 'django.template',
 ]
 
 MIDDLEWARE = [

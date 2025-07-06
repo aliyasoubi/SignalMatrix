@@ -1,0 +1,66 @@
+<!-- dashboard/templates/dashboard/btc_signals.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BTC Signals Dashboard</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f6f8fa;
+            margin: 0;
+            padding: 1.5em;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            background: white;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 0.5em 1em;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        tr:hover {
+            background: #f0f4ff;
+        }
+    </style>
+</head>
+<body>
+<h1>Last 10 BTC Signals</h1>
+{% if signals %}
+<table>
+    <thead>
+    <tr>
+        <th>Timestamp</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Score</th>
+        <th>Raw Data</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for s in signals %}
+    <tr>
+        <td>{{ s.timestamp|date:"Y-m-d H:i:s" }}</td>
+        <td>{{ s.signal_type }}</td>
+        <td>{{ s.description }}</td>
+        <td>{{ s.score|floatformat:2 }}</td>
+        <td>
+            <pre style="white-space: pre-wrap; word-break: break-word;">{{ s.raw_data|safe }}</pre>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No BTC signals found.</p>
+{% endif %}
+</body>
+</html>
